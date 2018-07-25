@@ -1,22 +1,24 @@
 function groupAnimals(animals) {
-  var sortAnimal=animals.sort();
-  var tampung=[];
-  var tampung2=[];
-  for (var i = 0; i < sortAnimal.length; i++) {
-    if (i !== sortAnimal.length -1 && sortAnimal[i][0]===sortAnimal[i+1][0] ) {
-      tampung.push(sortAnimal[i])
+  var alfabet = 'abcdefghijklmnopqrstuvwxyz'
+  var alfabetSplit = alfabet.split('')
+  // console.log(alfabetSplit)
+  var result =[]
+
+  for (var i = 0; i < alfabet.length; i++){
+    var temp = []
+    for (var j = 0; j < animals.length; j++){
+      if (alfabetSplit[i] === animals[j][0])
+      temp.push(animals[j])
     }
-    else  {
-      tampung.push(sortAnimal[i])
-      tampung2.push(tampung)
-      tampung=[]
-     }
+    if (temp.length !== 0){
+      result.push(temp)
+    }
   }
-  return tampung2;
+  return result
 }
 
-
+// TEST CASES
 console.log(groupAnimals(['cacing', 'ayam', 'kuda', 'anoa', 'kancil']));
 // [ ['ayam', 'anoa'], ['cacing'], ['kuda', 'kancil'] ]
 console.log(groupAnimals(['cacing', 'ayam', 'kuda', 'anoa', 'kancil', 'unta', 'cicak' ]));
-// [ ['ayam', 'anoa'], ['cacing', 'cicak'], ['kuda'], ['unta'] ]
+// [ ['ayam', 'anoa'], ['cacing', 'cicak'], ['kuda', 'kancil'], ['unta'] ]
